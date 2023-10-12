@@ -1,0 +1,7 @@
+<h1>Shows</h1>  
+
+<% @shows.each do |show| %>
+  <h3><%= show.artist_name %></h3>
+  <p>Price: <%= show.price %></p>
+  <p>Sold Out? <%= show.sold_out %></p>
+<% end %>
