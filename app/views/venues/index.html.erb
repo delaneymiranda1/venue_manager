@@ -1,0 +1,10 @@
+<h1>Venues</h1>  
+
+<% @venues.each do |venue| %>
+  <h3>Name: <%= link_to venue.name %></h3>
+  <p>Venue ID: <%= venue.id %></p>
+  <p>Location: <%= venue.city %></p>
+  <p>Capacity: <%= venue.capacity %></p>
+  <p>Open? <%= venue.open %></p>
+  <p>Created At: <%= venue.created_at.strftime("%B %d, %Y %I:%M %p") %><p>
+<% end %>

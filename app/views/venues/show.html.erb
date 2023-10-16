@@ -1,0 +1,6 @@
+<h1><%= @venue.name %></h1>
+<p>Location: <%= @venue.city %></p>
+<p>Capacity: <%= @venue.capacity %></p>
+<p>Open? <%= @venue.open %></p>
+<p># of Shows: <%= @show_count %></p>
+<p><%= link_to "This Venues Shows", venue_shows_path(@venue) %></p>
