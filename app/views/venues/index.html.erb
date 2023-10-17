@@ -1,10 +1,15 @@
+<nav>
+<%= link_to "Shows Index", shows_path %>
+</nav>
+
 <h1>Venues</h1>  
 
-<% @venues.each do |venue| %>
-  <h3>Name: <%= link_to venue.name %></h3>
-  <p>Venue ID: <%= venue.id %></p>
-  <p>Location: <%= venue.city %></p>
-  <p>Capacity: <%= venue.capacity %></p>
-  <p>Open? <%= venue.open %></p>
-  <p>Created At: <%= venue.created_at.strftime("%B %d, %Y %I:%M %p") %><p>
-<% end %>
+<%= link_to "New Venue", "/venues/new" %></br></br>
+
+
+<% @venues.each do |venue| %> 
+  <%= link_to "#{venue.name}", "/venues/#{venue.id}" %> Created At: <%= venue.created_at %></br>
+      
+  <%= button_to "Delete #{venue.name}", "/venues/#{venue.id}", method: :delete %>
+<% end %>  
+

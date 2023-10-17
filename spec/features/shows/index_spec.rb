@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'the Shows index page' do
+
   # User Story 3, Child Index 
 
   # As a visitor
@@ -23,10 +24,10 @@ RSpec.describe 'the Shows index page' do
   # When I visit any page on the site
   # Then I see a link at the top of the page that takes me to the Child Index
   it 'displays a link to the show index' do
-    visit "/shows/"
-    expect(page).to have_content("Shows Index")
-    visit "/venues/"
-    expect(page).to have_content("Shows Index")
+    visit "/venues/1"
+    click_link "Shows Index"
+      
+    expect(assert_current_path("/shows")).to be true
   end
 
   

@@ -1,6 +1,13 @@
+<%= link_to "Shows Index", shows_path %>
+<%= link_to "Venues Index", venues_path %>
+
 <h1><%= @venue.name %></h1>
 <p>Location: <%= @venue.city %></p>
 <p>Capacity: <%= @venue.capacity %></p>
 <p>Open? <%= @venue.open %></p>
-<p># of Shows: <%= @show_count %></p>
-<p><%= link_to "This Venues Shows", venue_shows_path(@venue) %></p>
+<p># of Shows: <%= @venue.show_count %></p>
+<%= link_to "This Venues Shows", "/venues/#{@venue.id}/shows" %></br></br>
+
+<%= link_to "Update #{@venue.name}", "/venues/#{@venue.id}/edit" %></br>
+
+<%= button_to "Delete", "/venues/#{@venue.id}", method: :delete %>

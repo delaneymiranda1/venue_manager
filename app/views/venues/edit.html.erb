@@ -1,0 +1,20 @@
+<nav>
+  <%= link_to "Shows", "/shows" %></br>
+  <%= link_to "Venues", "/venues" %>
+</nav>
+
+<form action="/venues/<%= @venue.id %>" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <input type="hidden" name="_method" value="PATCH" />
+  <p><b>Edit Venue</b></p>
+  <input type='text' id='name' name='name' value='name'/><br/>
+  <input type='text' id='city' name='city' value='city'/><br/>
+  <input type='number' id='capacity' name='capacity' min='1'/>
+  <label for='capacity'> capacity</label><br/>
+  <input type='radio' id='open' name='open' value='true'>
+  <label for='open'> venue is open</label><br/>
+  <input type='radio' id='closed' name='closed' value='false'>
+  <label for='closed'> venue is closed</label><br/>
+  <button type='submit' name='submit' value='submit'>Submit</>
+
+</form>

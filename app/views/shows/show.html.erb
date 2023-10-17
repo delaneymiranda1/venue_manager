@@ -1,3 +1,14 @@
+<nav>
+<%= link_to "Shows Index", shows_path %>
+<%= link_to "Venues Index", venues_path %>
+</nav>
+
 <h1><%= @show.artist_name %></h1>
-<p>Price: <%= @show.price%></p>
-<p>Sold Out? <%= @show.sold_out%></p>
+
+<p><b>Price: </b><%= @show.price%></p>
+
+<p><b>This show is sold out: </b><%= @show.sold_out%></p>
+
+<%= link_to "Update Show<", "/shows/#{@show.id}/edit" %>
+
+<%= button_to "Delete", "/shows/#{@show.id}", method: :delete %>

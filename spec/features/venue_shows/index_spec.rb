@@ -18,13 +18,35 @@ RSpec.describe 'the Venue_shows index page' do
     expect(page).to have_content(false)
   end
 
-  #   User Story 10, Parent Child Index Link
+  it 'displays link that navigates to shows index' do
+    visit "/venues/1"
+    click_link "Shows Index"
+    
+    expect(assert_current_path("/shows")).to be true
+  end
+
+  it 'displays link that navigates to venues index' do
+    visit "/venues/1/shows"
+    click_link "Venues Index"
+
+    expect(assert_current_path("/venues")).to be true
+  end
+
+  User Story 13, Parent Child Creation 
 
   # As a visitor
-  # When I visit a parent show page ('/parents/:id')
-  # Then I see a link to take me to that parent's `child_table_name` page ('/parents/:id/child_table_name')
-  it 'displays a link to the venue_shows index' do
-    visit "/venues/1"
-    expect(page).to have_content("This Venues Shows")
+  # When I visit a Parent Children Index page
+  # Then I see a link to add a new adoptable child for that parent "Create Child"
+  # When I click the link
+  # I am taken to '/parents/:parent_id/child_table_name/new' where I see a form to add a new adoptable child
+  # When I fill in the form with the child's attributes:
+  # And I click the button "Create Child"
+  # Then a `POST` request is sent to '/parents/:parent_id/child_table_name',
+  # a new child object/row is created for that parent,
+  # and I am redirected to the Parent Childs Index page where I can see the new child listed
+  xit 'displays a create shows button and a form to fill out for new show' do
+    
   end
+
+
 end

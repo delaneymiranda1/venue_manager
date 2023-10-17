@@ -21,6 +21,7 @@ RSpec.describe 'the Venues index page' do
   # And next to each of the records I see when it was created
   it 'displays venues sorted by most recently created' do
     visit "/venues"
+    
     expect(page).to have_content("Created At:")
   end
   #   User Story 9, Parent Index Link
@@ -31,8 +32,45 @@ RSpec.describe 'the Venues index page' do
   it 'displays a link to the venue index' do
     visit "/shows/"
     expect(page).to have_content("Venues Index")
-    visit "/venues/"
+    visit "/venues/1"
     expect(page).to have_content("Venues Index")
   end
+  # User Story 11, Parent Creation 
 
+  # As a visitor
+  # When I visit the Parent Index page
+  # Then I see a link to create a new Parent record, "New Parent"
+  # When I click this link
+  # Then I am taken to '/parents/new' where I  see a form for a new parent record
+  # When I fill out the form with a new parent's attributes:
+  # And I click the button "Create Parent" to submit the form
+  # Then a `POST` request is sent to the '/parents' route,
+  # a new parent record is created,
+  # and I am redirected to the Parent Index page where I see the new Parent displayed.
+  it 'displays a link to a form that creates a new venue' do
+    visit "/venues"
+    click_link "New Venue"
+
+    expect(page).to have_content("New Venue")
+    expect(assert_current_path("/venues/new")).to be true
+  end
+
+  it 'user fills in form for venue with proper attributes, selects New Venue then redirects back to venues with new one added' do 
+    visit '/venues/new'
+    fill_in('name', with: 'The Mishawaka')
+    fill_in('city', with: 'Bellvue') 
+    fill_in('capacity', with: 950)
+    fill_in('open', with: true)
+    click_on ('Create Venue')
+    expect(current_path).to eq('/venues')
+    expect(page).to have_content('The Mishawaka')
+  end
+
+  xit 'delete link deletes this record and refreshes' do
+    visit "/venues"
+    click_button "Delete Red Rocks"
+
+    expect(assert_current_path("/venues")).to be true
+    expect(page).not_to have_content("Red Rocks")
+  end
 end

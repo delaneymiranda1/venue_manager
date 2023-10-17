@@ -1,0 +1,17 @@
+<center>
+  <h1>New Venue</h1>
+<section class="new-card card">
+  <div class=" card-body">
+    <%= form_with url: '/venues', method: :post, data: { turbo: false } do |f| %>
+      <%= f.label :name %>
+      <%= f.text_field :name, placeholder: "enter venue name" %> 
+      <%= f.label :city %>
+      <%= f.text_field :city, placeholder: "enter city" %>
+      <%= f.label :capacity %>
+      <%= f.text_field :capacity, placeholder: "enter capacity" %>
+      <%= f.label :open %> 
+      <%= f.text_field :open, placeholder: "enter true or false" %>
+      <%= f.submit 'Create Venue', class: 'button' %>
+    <% end %>
+  </div>
+</center>

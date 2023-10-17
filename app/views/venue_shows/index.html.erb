@@ -1,6 +1,18 @@
+<nav>
+<%= link_to "Shows Index", shows_path %>
+<%= link_to "Venues Index", venues_path %>
+</nav>
 
-<% @shows.each do |show| %>
+<h1> Shows at: <%= @venue.name %></h1>
+
+<%= link_to "Add Show", "/venues/#{@venue.id}/shows/new" %></br>
+
+<%= link_to "Sort Shows", :sort_by => "artist_name" %>
+
+<% @venue_shows.each do |show| %>
   <h3><%= show.artist_name %></h3>
-  <p>Price: <%= show.price %></p>
-  <p>Sold Out? <%= show.sold_out %></p>
+  <p><b>Price: </b><%= show.price %></p>
+  <p><b>This show is sold out: </b><%= show.sold_out %></p>
+
+  <%= button_to "Delete #{show.artist_name}", "/shows/#{show.id}", method: :delete %>
 <% end %>
