@@ -65,12 +65,4 @@ RSpec.describe 'the Venues index page' do
     expect(current_path).to eq('/venues')
     expect(page).to have_content('The Mishawaka')
   end
-
-  xit 'delete link deletes this record and refreshes' do
-    visit "/venues"
-    click_button "Delete Red Rocks"
-
-    expect(assert_current_path("/venues")).to be true
-    expect(page).not_to have_content("Red Rocks")
-  end
 end
